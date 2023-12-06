@@ -5,7 +5,7 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link
+  useParams
 } from "react-router-dom";
 
 
@@ -15,16 +15,16 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<UrlShortener/>} />
-          <Route path="/:site_code" element={<RedirectToSite/>} />
+          <Route path="/:site_code" element={<RedirectToSiteHelper/>}/>
         </Routes>
       </Router>
     </div>
   );
 }
 
-// function routers_router() {
-//   let { sub_directory } = useParams();
-//   return <UrlShortener />;
-// }
+function RedirectToSiteHelper() {
+  let { site_code } = useParams();
+  return <RedirectToSite site_code={site_code} />;
+}
 
 export default App;
