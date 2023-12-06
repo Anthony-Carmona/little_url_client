@@ -2,3 +2,46 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+.panel{
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    background-color:#e6e6ff;
+    width: 600px;
+    height: 300px;
+    border-radius: 5px;
+    border-color: aquamarine;
+    border-width: 1px;
+    box-shadow: 3px 3px 3px black;
+  }
+  .header{
+    margin:auto;
+    font-weight: bold;
+  }
+  .inputBox{
+    border-radius: 2px;
+    border-color: black;
+    border-width: 1px;
+    width: 500px;
+    height: 40px;
+    margin-top: 5px;
+    margin-bottom:30px;
+  }
+  .submit{
+    padding: 10px 10px;
+    margin-bottom:10px;
+    border-radius: 8px;
+    background: rgb(58,218,222);
+    background: linear-gradient(90deg, rgba(58,218,222,1) 0%, rgba(110,246,210,1) 35%, rgba(0,212,255,1) 100%);
+  }
+  .submit:hover{
+    background: rgb(219,49,232);
+    background: linear-gradient(90deg, rgba(219,49,232,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+  }
+  .littleUrl{
+    text-align: center;
+    color: blue;
+  }
