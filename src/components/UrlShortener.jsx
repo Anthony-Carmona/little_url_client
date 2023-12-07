@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
 import { Panel } from 'rsuite';
+import { Link } from 'react-router-dom'
 
 export default function UrlShortener() {
 
@@ -33,14 +34,15 @@ export default function UrlShortener() {
 
     </div> 
      <button onClick={ handleSubmit } className="submit">Submit</button>
-    <div>Your little url:</div>
+    
     { little_url &&
+      <>
+      <div>Your little url:</div>
       <div className="littleUrl">
-     {little_url}
+     <Link to={little_url}>{little_url}</Link>
       </div>
+      </>
     }
-
-    {url}
     </Panel>
 
     )

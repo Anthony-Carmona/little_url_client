@@ -1,22 +1,47 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
+import ReactLoading from "react-loading";
 
 export default function RedirectToSite({site_code}) {
 
-    // axios.get(
-    //     `${REACT_APP_SERVER_URL}`,
-    //     { long_url: url }
-    //   ).then(
-    //     (data) => {
-    //       set_little_url(window.location.href + data.data.little_url)
-    //     }
-    //   )
+    const [redirectUrl, setRedirectUrl] = useState()
+    const [errorMsg, setErrorMsg] = useState()
+
+    useEffect(() => {
+        axios.get(
+            `${process.env.REACT_APP_SERVER_URL}/${site_code}`,
+          ).then(
+            (data) => {
+              data.data ? setRedirectUrl(data.data.long_url) : handleError("invalid site code")
+            }, (err) => {
+                handleError(err)
+            } 
+          )
+       }, []);
+
+    useEffect(
+        () => {
+            if(redirectUrl) window.location.href = redirectUrl;
+        }
+        ,[redirectUrl])
+
+
+    function handleError(err){
+        console.log("error")
+        console.log(err)
+        console.log("error")
+    }
 
     return (
-    <div>
-        hello world
-        site code:{ site_code }
-        server url: { process.env.REACT_APP_SERVER_URL }
+        <div>
+        <h2>Redirecting</h2>
+        <ReactLoading
+            
+            type="spinningBubbles"
+            color="#0000FF"
+            height={100}
+            width={50}
+        />
     </div>
     )
 }
